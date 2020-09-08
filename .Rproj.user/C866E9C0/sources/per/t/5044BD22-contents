@@ -11,7 +11,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ```{r, message=F, warning=F}
 library(tidyr)
-library()
+# library()
 library(dplyr)
 library(ggplot2)
 library(ggpubr)
@@ -44,7 +44,7 @@ ggplot(potholes[potholes$Scenario=="Current",], aes(Pothole, Prediction, fill=Po
 ```
 # Compare Alternative Scenarios
 
-```{r}
+```{r, fig.width=7.1}
 
 labs <- c("Current", "Retired", "Low Drainage and Retired", "No Till", "Natural Prairie")
 names(labs) <- unique(potholes$Scenario)
@@ -67,6 +67,7 @@ plt <- ggplot(potholes, aes(x=Pothole, y=Prediction, fill=Pothole))+
     fill=NULL
   ) +
   # theme_pubclean()+
+  theme_bw(base_size = 9)+
   theme(legend.position = "bottom",
         axis.text.x=element_blank(), axis.ticks.x = element_blank())
 
@@ -75,7 +76,7 @@ plt
 
 
 ```{r}
-png("CaseStudy.png", width=600, height = 400)
+png("CaseStudy.png", width=135, height = 75, units = "mm", res=200)
 plt
 dev.off()
 ```
