@@ -8,5 +8,6 @@
 "0","  ) +"
 "0","  theme_pubclean()+"
 "0","  theme(legend.position = ""none"")"
-"2","Scale for 'fill' is already present. Adding another scale for 'fill', which will replace the existing scale.
+"2","Scale for 'fill' is already present. Adding another scale for 'fill', which will replace the existing
+scale.
 "

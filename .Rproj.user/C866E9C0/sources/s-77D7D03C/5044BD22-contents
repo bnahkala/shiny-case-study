@@ -18,6 +18,7 @@ library(ggpubr)
 library(ggeffects)
 library(wesanderson)
 library(rayshader)
+library(RColorBrewer)
 ```
 
 
@@ -61,38 +62,9 @@ plt <- ggplot(potholes, aes(x=Pothole, y=Prediction, fill=Pothole))+
              , labeller = labeller(Scenario2 = label_wrap_gen(15))
              )+
   geom_bar(stat="identity"
-           , alpha=0.5
-           )+
-  scale_fill_brewer(palette = "Dark2")+
-  scale_fill_hue(l=25)+
-  labs(
-    x=NULL,
-    y="Flood Risk Prediction",
-    fill=NULL
-  ) +
-  # theme_pubclean()+
-  theme_bw(base_size = 9)+
-  theme(legend.position = "bottom",
-        axis.text.x=element_blank(), axis.ticks.x = element_blank())
-
-plt
-```
-
-```{r}
-labs2 <- c("Current", "Retired", "Low Drainage and Retired", "No Till", "Natural Prairie", "Low", "Medium", "High", "Conservation Till", "Low Drainage and No Till", "Retired and No Till", "Low Drainage and Con. Till", "Retirement and Con. Till")
-names(labs2) <- unique(hen$Scenario)
-
-hen$Scenario2 <- c("Current", "Retired", "Low Drainage and Retired", "No Till", "Natural Prairie", "Low", "Medium", "High", "Conservation Till", "Low Drainage and No Till", "Retired and No Till", "Low Drainage and Con. Till", "Retirement and Con. Till")
-hen$Scenario2 <- factor(hen$Scenario2, levels=c("Current", "Retired", "Low Drainage and Retired", "No Till", "Natural Prairie", "Low", "Medium", "High", "Conservation Till", "Low Drainage and No Till", "Retired and No Till", "Low Drainage and Con. Till", "Retirement and Con. Till"))
-
-plt <- ggplot(hen, aes(x=Scenario2, y=Prediction, fill=Prediction))+
-  # facet_grid(cols = vars(Scenario2) 
-  #            , labeller = labeller(Scenario2 = label_wrap_gen(15))
-  #            )+
-  geom_bar(stat="identity"
            , alpha=0.75
            )+
-  # scale_fill_brewer(palette = "Dark2")+
+  scale_fill_brewer(palette = "RdYlBu")+
   # scale_fill_hue(l=25)+
   labs(
     x=NULL,
@@ -100,18 +72,62 @@ plt <- ggplot(hen, aes(x=Scenario2, y=Prediction, fill=Prediction))+
     fill=NULL
   ) +
   # theme_pubclean()+
-  theme_bw(base_size = 9)+
-  theme(legend.position = "right",
-        axis.text.x=element_text(angle = 35))
-  #       axis.ticks.x = element_blank())
+  theme_bw(base_size = 10)+
+  theme(legend.position = "bottom",
+        axis.text.x=element_blank(), axis.ticks.x = element_blank())
 
 plt
 ```
 
+```{r, fig.width=7.1}
+labs2 <- c("Current", "Retired", "Low Drainage and Retired", "No Till", "Natural Prairie", "Low", "Medium", "High", "Conservation Till", "Low Drainage and No Till", "Retired and No Till", "Low Drainage and Con. Till", "Retirement and Con. Till")
+names(labs2) <- unique(hen$Scenario)
+
+hen$Scenario2 <- c("Current", "Retired", "Low Drainage and Retired", "No Till", "Natural Prairie", "Low", "Medium", "High", "Conservation Till", "Low Drainage and No Till", "Retired and No Till", "Low Drainage and Con. Till", "Retirement and Con. Till")
+hen$Scenario2 <- factor(hen$Scenario2, levels=c("Current", "Retired", "Low Drainage and Retired", "Conservation Till", "No Till", "Natural Prairie", "Low", "Medium", "High", "Low Drainage and Con. Till", "Low Drainage and No Till", "Retirement and Con. Till", "Retired and No Till"  ))
+
+hen$Scenario3 <- c("C", "R", "LD-R", "NT", "NP", "LD", "MD", "HD", "CT", "LD-NT", "R-NT", "LD-CT", "R-CT")
+hen$Scenario3 <- factor(hen$Scenario3, levels=c("C", "R", "LD-R", "CT","NT", "NP", "LD", "MD", "HD", "LD-CT", "LD-NT", "R-CT",  "R-NT"))
+
+
+hen$groups <- c("Baseline", "Land Use", "Stacked Practices", "Land Use", "Baseline", rep("Drainage", 3), "Land Use", rep("Stacked Practices", 4))
+
+clr="#FDAE61"
+
+plt2 <- ggplot(hen, aes(x=Scenario3, y=Prediction))+
+  facet_grid(cols = vars(groups), scales="free_x", space = "free_x"
+             # , labeller = labeller(Scenario2 = label_wrap_gen(15))
+             )+
+  # scale_fill_gradient(low = "darkorange", high = "darkred", na.value = NA)+
+  geom_bar(stat="identity"
+           , alpha=1
+           , fill = clr
+           )+
+  # scale_fill_hue(l=25)+
+  labs(
+    x=NULL,
+    y="Flood Risk Prediction",
+    fill=NULL
+  ) +
+  # theme_pubclean()+
+  theme_bw(base_size = 10)+
+  theme(legend.position = "none")#,
+        # axis.text.x=element_text(angle = 90))
+  #       axis.ticks.x = element_blank())
+
+plt2
+```
+
+```{r, fig.width=7.1, fig.height=6}
+ggarrange(plt2, plt, ncol=1, labels = c("A", "B"))
+
+```
+
+
 
 
 ```{r}
-png("CaseStudy.png", width=135, height = 75, units = "mm", res=200)
+png("CaseStudy.png", width=135, height = 75, units = "mm", res=300)
 plt
 dev.off()
 ```

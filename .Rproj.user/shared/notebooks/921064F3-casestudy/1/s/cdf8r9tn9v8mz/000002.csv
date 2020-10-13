@@ -6,3 +6,4 @@
 "0","library(ggeffects)"
 "0","library(wesanderson)"
 "0","library(rayshader)"
+"0","library(RColorBrewer)"

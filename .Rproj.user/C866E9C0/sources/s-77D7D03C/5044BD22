@@ -5,16 +5,16 @@
     "dirty" : false,
     "encoding" : "UTF-8",
     "folds" : "",
-    "hash" : "1942378744",
+    "hash" : "0",
     "id" : "5044BD22",
-    "lastKnownWriteTime" : 1602610148,
-    "last_content_update" : 1602610148985,
+    "lastKnownWriteTime" : 1602620262,
+    "last_content_update" : 1602620262987,
     "path" : "C:/github/shiny-case-study/casestudy.Rmd",
     "project_path" : "casestudy.Rmd",
     "properties" : {
-        "cursorPosition" : "97,11",
-        "last_setup_crc32" : "A0C84B75bb338d19",
-        "scrollLine" : "85"
+        "cursorPosition" : "96,7",
+        "last_setup_crc32" : "77D7D03Cbb338d19",
+        "scrollLine" : "87"
     },
     "read_only" : false,
     "read_only_alternatives" : [
