@@ -26,6 +26,10 @@ library(rayshader)
 ```{r}
 potholes <- read.table("casestudy.csv", header=T, sep=",")
 head(potholes)
+
+hen <- potholes[potholes$Pothole == "Hen", ]
+multi <- c("Current", "Retirement", "LowRetire", "NoTill", "Natural")
+potholes <- potholes[potholes$Scenario %in% multi, ]
 ```
 
 # Compare Current State Only
@@ -73,6 +77,37 @@ plt <- ggplot(potholes, aes(x=Pothole, y=Prediction, fill=Pothole))+
 
 plt
 ```
+
+```{r}
+labs2 <- c("Current", "Retired", "Low Drainage and Retired", "No Till", "Natural Prairie", "Low", "Medium", "High", "Conservation Till", "Low Drainage and No Till", "Retired and No Till", "Low Drainage and Con. Till", "Retirement and Con. Till")
+names(labs2) <- unique(hen$Scenario)
+
+hen$Scenario2 <- c("Current", "Retired", "Low Drainage and Retired", "No Till", "Natural Prairie", "Low", "Medium", "High", "Conservation Till", "Low Drainage and No Till", "Retired and No Till", "Low Drainage and Con. Till", "Retirement and Con. Till")
+hen$Scenario2 <- factor(hen$Scenario2, levels=c("Current", "Retired", "Low Drainage and Retired", "No Till", "Natural Prairie", "Low", "Medium", "High", "Conservation Till", "Low Drainage and No Till", "Retired and No Till", "Low Drainage and Con. Till", "Retirement and Con. Till"))
+
+plt <- ggplot(hen, aes(x=Scenario2, y=Prediction, fill=Prediction))+
+  # facet_grid(cols = vars(Scenario2) 
+  #            , labeller = labeller(Scenario2 = label_wrap_gen(15))
+  #            )+
+  geom_bar(stat="identity"
+           , alpha=0.75
+           )+
+  # scale_fill_brewer(palette = "Dark2")+
+  # scale_fill_hue(l=25)+
+  labs(
+    x=NULL,
+    y="Flood Risk Prediction",
+    fill=NULL
+  ) +
+  # theme_pubclean()+
+  theme_bw(base_size = 9)+
+  theme(legend.position = "right",
+        axis.text.x=element_text(angle = 35))
+  #       axis.ticks.x = element_blank())
+
+plt
+```
+
 
 
 ```{r}

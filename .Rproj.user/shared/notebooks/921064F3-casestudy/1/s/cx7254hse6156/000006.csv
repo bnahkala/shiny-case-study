@@ -23,7 +23,7 @@
 "0","  theme_bw(base_size = 9)+"
 "0","  theme(legend.position = ""bottom"","
 "0","        axis.text.x=element_blank(), axis.ticks.x = element_blank())"
-"2","Scale for 'fill' is already present. Adding another scale for 'fill', which will replace the existing
-scale.
+"2","Scale for 'fill' is already present. Adding another scale for 'fill', which will replace
+the existing scale.
 "
 "0","plt"

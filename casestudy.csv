@@ -19,3 +19,11 @@ Mouth,Retirement,4.9,5.6,6.3
 Mouth,LowRetire,2.1,2.8,3.5
 Mouth,NoTill,4.5,5.2,5.9
 Mouth,Natural,2.1,2.5,3.5
+Hen,Low Drainage,0.8,1.5,2.2
+Hen,Medium Drainage,0.2,0.9,1.6
+Hen,High Drainage,0.1,0.7,1.4
+Hen,Conservation Till,4.9,5.9,6.3
+Hen,Low Drainage + No Till,0.8,1.5,2.2
+Hen,Retirement + No Till,4.4,5.1,5.8
+Hen,Low Drainage + ConTill,0.8,1.5,2.2
+Hen,Retirement + ConTill,4.8,5.5,6.2
