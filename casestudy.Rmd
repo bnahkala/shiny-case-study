@@ -100,7 +100,7 @@ plt2 <- ggplot(hen, aes(x=Scenario3, y=Prediction))+
              )+
   # scale_fill_gradient(low = "darkorange", high = "darkred", na.value = NA)+
   geom_bar(stat="identity"
-           , alpha=1
+           , alpha=0.75
            , fill = clr
            )+
   # scale_fill_hue(l=25)+
@@ -127,8 +127,8 @@ ggarrange(plt2, plt, ncol=1, labels = c("A", "B"))
 
 
 ```{r}
-png("CaseStudy.png", width=135, height = 75, units = "mm", res=300)
-plt
+png("CaseStudy.png", width=190, height = 160, units = "mm", res=300)
+ggarrange(plt2, plt, ncol=1, labels = c("A", "B"))
 dev.off()
 ```
 

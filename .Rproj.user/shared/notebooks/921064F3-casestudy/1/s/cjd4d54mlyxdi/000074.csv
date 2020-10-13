@@ -18,7 +18,7 @@
 "0","             )+"
 "0","  # scale_fill_gradient(low = ""darkorange"", high = ""darkred"", na.value = NA)+"
 "0","  geom_bar(stat=""identity"""
-"0","           , alpha=1"
+"0","           , alpha=0.75"
 "0","           , fill = clr"
 "0","           )+"
 "0","  # scale_fill_hue(l=25)+"
