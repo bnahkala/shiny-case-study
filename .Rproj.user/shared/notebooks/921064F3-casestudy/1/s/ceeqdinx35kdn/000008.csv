@@ -1,0 +1,4 @@
+"0",""
+"0","hen <- potholes[potholes$Pothole == ""Hen"", ]"
+"0","multi <- c(""Current"", ""Retirement"", ""LowRetire"", ""NoTill"", ""Natural"")"
+"0","potholes <- potholes[potholes$Scenario %in% multi, ]"

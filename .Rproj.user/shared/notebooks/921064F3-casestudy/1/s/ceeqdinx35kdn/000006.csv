@@ -1,4 +1,2 @@
-"0",""
-"0","hen <- potholes[potholes$Pothole == ""Hen"", ]"
-"0","multi <- c(""Current"", ""Retirement"", ""LowRetire"", ""NoTill"", ""Natural"")"
-"0","potholes <- potholes[potholes$Scenario %in% multi, ]"
+"0","potholes <- read.table(""casestudy.csv"", header=T, sep="","")"
+"0","head(potholes)"

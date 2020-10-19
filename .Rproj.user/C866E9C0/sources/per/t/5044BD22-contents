@@ -51,11 +51,11 @@ ggplot(potholes[potholes$Scenario=="Current",], aes(Pothole, Prediction, fill=Po
 
 ```{r, fig.width=7.1}
 
-labs <- c("Current", "Retired", "Low Drainage and Retired", "No Till", "Natural Prairie")
-names(labs) <- unique(potholes$Scenario)
+potholes$Scenario2 <- rep(c("Current (C)", "Retired (R)", "Low Drainage and Retired (LD-R)", "No Till (NT)", "Natural Prairie (NP)"), 4)
+potholes$Scenario2 <- factor(potholes$Scenario2, levels=c("Current (C)", "Retired (R)", "Low Drainage and Retired (LD-R)", "No Till (NT)", "Natural Prairie (NP)"))
 
-potholes$Scenario2 <- rep(c("Current", "Retired", "Low Drainage and Retired", "No Till", "Natural Prairie"), 4)
-potholes$Scenario2 <- factor(potholes$Scenario2, levels=c("Current", "Retired", "Low Drainage and Retired", "No Till", "Natural Prairie"))
+labs <- c("Current (C)", "Retired (R)", "Low Drainage and Retired (LD-R)", "No Till (NT)", "Natural Prairie (NP)")
+names(labs) <- unique(potholes$Scenario2)
 
 plt <- ggplot(potholes, aes(x=Pothole, y=Prediction, fill=Pothole))+
   facet_grid(cols = vars(Scenario2) 
